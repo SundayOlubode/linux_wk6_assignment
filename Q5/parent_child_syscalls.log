@@ -1,0 +1,7 @@
+1664  wait4(1666, 0x7ffdcabc4f98, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set)
+1664  --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1664  wait4(1666, 0x7ffdcabc4f98, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set)
+1664  --- SIGWINCH {si_signo=SIGWINCH, si_code=SI_KERNEL} ---
+1664  wait4(1666, 0x7ffdcabc4f98, 0, NULL) = ? ERESTARTSYS (To be restarted if SA_RESTART is set)
+1664  --- SIGTERM {si_signo=SIGTERM, si_code=SI_USER, si_pid=1697, si_uid=1000} ---
+1664  +++ killed by SIGTERM +++
