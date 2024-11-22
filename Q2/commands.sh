@@ -1,10 +1,13 @@
 # Run in Assembly
+echo "Running calculator in Assembly"
 nasm -f elf32 calculator.asm -o calculator.o
 ld -m elf_i386 calculator.o -o asm_calculator
 ./asm_calculator
 
+echo -e "\n"
 
 # Run in C
+echo "Running calculator in C"
 gcc -o c_calculator calculator.c
 ./c_calculator
 

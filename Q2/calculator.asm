@@ -5,13 +5,13 @@ section .data
     result_msg db "Result:  ", 0
     invalid_op db "Invalid operator!", 0
     newline db 0xA, 0
-    buffer db 0, 0      ; Buffer for operator input (2 bytes: operator + null terminator)
-    num1 dd 0           ; First number
-    num2 dd 0           ; Second number
-    result dd 0         ; Result of calculation
+    buffer db 0, 0      
+    num1 dd 0
+    num2 dd 0 
+    result dd 0 
 
 section .bss
-    temp resb 10        ; Temporary buffer for number input
+    temp resb 10
 
 section .text
     global _start
@@ -47,9 +47,9 @@ _start:
     mov edx, 2
     int 0x80
     mov al, [buffer]
-    cmp al, 0xA         ; Check for newline
+    cmp al, 0xA 
     je invalid_operator
-    mov byte [buffer+1], 0   ; Null-terminate the buffer
+    mov byte [buffer+1], 0
 
     ; Prompt for the second number
     mov eax, 4
@@ -96,9 +96,9 @@ mul_op:
 
 div_op:
     mov eax, [num1]
-    xor edx, edx       ; Clear remainder
+    xor edx, edx       
     mov ebx, [num2]
-    div ebx            ; Divide eax by ebx
+    div ebx  
     jmp print_result
 
 invalid_operator:
@@ -118,7 +118,6 @@ print_result:
     mov edx, 8
     int 0x80
 
-    ; Print the result (after converting it to string)
     mov eax, 4
     mov ebx, 1
     mov ecx, temp
@@ -145,9 +144,9 @@ atoi:
     xor ebx, ebx
 atoi_loop:
     mov bl, byte [ecx]
-    cmp bl, 0xA         ; Newline character
+    cmp bl, 0xA 
     je atoi_done
-    sub bl, '0'         ; Convert ASCII to number
+    sub bl, '0' 
     imul eax, eax, 10
     add eax, ebx
     inc ecx
@@ -161,8 +160,8 @@ itoa:
     mov ecx, 10
 itoa_loop:
     xor edx, edx
-    div ecx             ; Divide eax by 10
-    add dl, '0'         ; Convert remainder to ASCII
+    div ecx 
+    add dl, '0'
     push dx
     inc ebx
     test eax, eax
@@ -174,5 +173,5 @@ itoa_pop:
     stosb
     dec ebx
     jnz itoa_pop
-    mov byte [edi], 0   ; Null-terminate string
+    mov byte [edi], 0
     ret
